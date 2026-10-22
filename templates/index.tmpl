@@ -1,0 +1,21 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "head" .}}
+<body data-page="{{.Page}}" data-root="{{.Root}}">
+  {{template "header" .}}
+  <main class="wrap" id="content">
+    <h1>{{.Title}}</h1>
+    <p>{{.Description}}</p>
+    <p><a href="#docs">How to use this template</a></p>
+    <section id="docs">
+      <h2>Add a page</h2>
+      <p>Add a template define, return it from the pages use case, and register a route. This page is a placeholder.</p>
+    </section>
+  </main>
+  {{template "footer" .}}
+  <script src="{{.Root}}js/content.js"></script>
+  <script src="{{.Root}}js/app.js"></script>
+</body>
+</html>
+{{end}}

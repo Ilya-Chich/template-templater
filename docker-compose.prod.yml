@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  rendering:
+    build:
+      context: .
+      dockerfile: environment/prod/Dockerfile
+    container_name: rendering
+    restart: unless-stopped
+    env_file:
+      - .env.prod
+    volumes:
+      - ./certs:/certs:ro
+    ports:
+      - "443:8081"

@@ -1,0 +1,10 @@
+{{define "footer"}}
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <nav class="footer-nav" aria-label="Footer">
+      {{range .Nav}}<a href="{{.Href}}">{{.Label}}</a>{{end}}
+    </nav>
+    <p>{{.Brand}} {{.Tag}}</p>
+  </div>
+</footer>
+{{end}}

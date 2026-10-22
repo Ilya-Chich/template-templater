@@ -1,0 +1,15 @@
+{{define "error-layout"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "head" .}}
+<body data-page="{{.Page}}" data-root="{{.Root}}">
+  {{template "header" .}}
+  <main class="wrap">
+    <h1>{{.Title}}</h1>
+    <p>{{.Description}}</p>
+    <p><a href="{{.Root}}">Home</a></p>
+  </main>
+  {{template "footer" .}}
+</body>
+</html>
+{{end}}

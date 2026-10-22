@@ -1,0 +1,13 @@
+{{define "header"}}
+<header class="site-header">
+  <div class="wrap-wide header-inner">
+    <a class="brand" href="{{.Root}}">
+      <span><strong>{{.Brand}}</strong><small>{{.Tag}}</small></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      {{range .Nav}}<a href="{{.Href}}"{{if .Current}} aria-current="page"{{end}}>{{.Label}}</a>{{end}}
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </div>
+</header>
+{{end}}
