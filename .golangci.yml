@@ -1,9 +1,4 @@
-issues:
-  exclude-rules:
-    - path: _test\.go
-      linters:
-        - dupl
-
+version: "2"
 linters:
   enable:
     - asciicheck
@@ -11,42 +6,47 @@ linters:
     - forbidigo
     - goconst
     - gocritic
-    - gofmt
     - goprintffuncname
     - gosec
-    - gosimple
     - makezero
     - misspell
     - revive
     - whitespace
-
-linters-settings:
+  settings:
+    dupl:
+      threshold: 450
     godot:
       exclude:
         - '@.+'
-
     revive:
       rules:
         - name: var-naming
-          arguments: [[], ["ID", "URL"], [{skipPackageNameChecks=true}]]
+          arguments:
+            - []
+            - - ID
+              - URL
+            - - skipPackageNameChecks=true: null
         - name: early-return
           severity: warning
         - name: argument-limit
+          arguments:
+            - 4
           severity: warning
-          arguments: [4]
           disabled: true
         - name: context-as-argument
-          severity: warning
           arguments:
-            - allowTypesBefore: "*testing.T"
+            - allowTypesBefore: '*testing.T'
+          severity: warning
         - name: context-keys-type
           severity: warning
         - name: datarace
           severity: warning
         - name: defer
-          severity: warning
           arguments:
-            - [ "call-chain", "loop", "return"]
+            - - call-chain
+              - loop
+              - return
+          severity: warning
         - name: error-naming
           severity: warning
         - name: error-strings
@@ -56,9 +56,10 @@ linters-settings:
         - name: if-return
           severity: warning
         - name: line-length-limit
+          arguments:
+            - 120
           severity: warning
           disabled: true
-          arguments: [ 120 ]
         - name: nested-structs
           severity: warning
           disabled: true
@@ -70,5 +71,27 @@ linters-settings:
           severity: warning
         - name: unexported-naming
           severity: warning
-    dupl:
-      threshold: 450
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - dupl
+        path: _test\.go
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofmt
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

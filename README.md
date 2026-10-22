@@ -32,5 +32,5 @@ MIT-licensed starter for a new HTML rendering service. Fork it, then replace the
 ## Tests and CI
 
 - `make test` runs `go test -race ./...`. It does not need Docker, `.env`, or TLS certificates.
-- `make lint` runs golangci-lint v1.64.5, the same version as CI.
+- `make lint` runs golangci-lint v2.15.0, the same version as CI.
 - GitHub Actions runs test (`-race`), lint, govulncheck, and `go build ./cmd/api` on pull requests and pushes to `main` or `master`. CI uses no secrets and does not start the server.

@@ -1,4 +1,4 @@
-FROM golang:1.24.0-alpine3.21 as builder
+FROM golang:1.26.10-alpine AS builder
 
 RUN apk --no-cache add gcc shadow musl-dev && apk add tzdata
 

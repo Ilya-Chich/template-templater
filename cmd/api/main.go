@@ -75,8 +75,9 @@ func main() {
 		IdleTimeout:       60 * time.Second,
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
-	defer stop()
-	if err := httpserver.Run(ctx, srv, cfg); err != nil {
+	err = httpserver.Run(ctx, srv, cfg)
+	stop()
+	if err != nil {
 		log.Fatal(err)
 	}
 }
